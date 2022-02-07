@@ -17,7 +17,7 @@
 package com.github.kernelmonkey.jajlogger;
 
 public enum Level {
-	VERBOSE(0), DEBUG(1), INFO(2), WARN(3), ERROR(4), NONE(9);
+	VERBOSE(0), DEBUG(1), INFO(2), WARN(3), ERROR(4);
 
 	private final int value;
 

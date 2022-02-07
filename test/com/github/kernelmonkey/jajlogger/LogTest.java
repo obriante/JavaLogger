@@ -23,95 +23,52 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class LogTest {
-
+	
 	@Before
 	public void init() {
-
-	}
-
-	@Test
-	public void VerboseTest() {
-		Log.level=Level.VERBOSE;
-		String TAG="VerboseTest";
-		assertEquals(0,Log.v(TAG, "This is a test message."));
-		assertEquals(0,Log.d(TAG, "This is a test message."));
-		assertEquals(0,Log.i(TAG, "This is a test message."));
-		assertEquals(0,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-	}
-
-	@Test
-	public void DebugTest() {
-		Log.level=Level.DEBUG;
-		String TAG="DebugTest";
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		assertEquals(0,Log.d(TAG, "This is a test message."));
-		assertEquals(0,Log.i(TAG, "This is a test message."));
-		assertEquals(0,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-	}
-	@Test
-	public void InfoTest() {
-		Log.level=Level.INFO;
-		String TAG="InfoTest";
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		assertEquals(1,Log.d(TAG, "This is a test message."));
-		assertEquals(0,Log.i(TAG, "This is a test message."));
-		assertEquals(0,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-	}
-	@Test
-	public void WarningTest() {
-		Log.level=Level.WARN;
-		String TAG="WarningTest";
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		assertEquals(1,Log.d(TAG, "This is a test message."));
-		assertEquals(1,Log.i(TAG, "This is a test message."));
-		assertEquals(0,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-	}
-
-	@Test
-	public void ErrorTest() {
-		Log.level=Level.ERROR;
-		String TAG="ErrorTest";
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		assertEquals(1,Log.d(TAG, "This is a test message."));
-		assertEquals(1,Log.i(TAG, "This is a test message."));
-		assertEquals(1,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-	}
-
-	@Test
-	public void NoneTest() {
-		Log.level=Level.NONE;
-		String TAG="NoneTest";
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		assertEquals(1,Log.d(TAG, "This is a test message."));
-		assertEquals(1,Log.i(TAG, "This is a test message."));
-		assertEquals(1,Log.w(TAG, "This is a test message."));
-		assertEquals(1,Log.e(TAG, "This is a test message."));
-	}
-
-	@Test
-	public void StreamTest() {
-		Log.level=Level.VERBOSE;
-		String TAG="StreamTest";
-		Log.stream=System.out;
-		assertEquals(0,Log.v(TAG, "This is a test message."));
-		assertEquals(0,Log.d(TAG, "This is a test message."));
-		assertEquals(0,Log.i(TAG, "This is a test message."));
-		assertEquals(0,Log.w(TAG, "This is a test message."));
-		assertEquals(0,Log.e(TAG, "This is a test message."));
-		Log.stream=null;
-		assertEquals(1,Log.v(TAG, "This is a test message."));
-		Log.stream=System.err;
 		
 	}
 
 	@Test
+	public void printTest() {
+		String TAG="printTest";
+		assertEquals(0,Log.v(TAG, "This is a test message."));
+		assertEquals(0,Log.d(TAG, "This is a test message."));
+		assertEquals(0,Log.i(TAG, "This is a test message."));
+		assertEquals(0,Log.w(TAG, "This is a test message."));
+		assertEquals(0,Log.e(TAG, "This is a test message."));
+	}
+
+	@Test
+	public void StreamTest() {
+		String TAG="StreamTest";
+		Log.setStream(System.out);
+		assertEquals(0,Log.v(TAG, "This is a test message."));
+		assertEquals(0,Log.d(TAG, "This is a test message."));
+		assertEquals(0,Log.i(TAG, "This is a test message."));
+		assertEquals(0,Log.w(TAG, "This is a test message."));
+		assertEquals(0,Log.e(TAG, "This is a test message."));
+		Log.setStream(null);
+	}
+	
+	@Test
+	public void tagTest() {
+		String TAG="";
+		assertEquals(0,Log.v(TAG, "This is a test message."));
+		assertEquals(0,Log.d(TAG, "This is a test message."));
+		assertEquals(0,Log.i(TAG, "This is a test message."));
+		assertEquals(0,Log.w(TAG, "This is a test message."));
+		assertEquals(0,Log.e(TAG, "This is a test message."));
+		TAG=null;
+		assertEquals(0,Log.v(TAG, "This is a test message."));
+		assertEquals(0,Log.d(TAG, "This is a test message."));
+		assertEquals(0,Log.i(TAG, "This is a test message."));
+		assertEquals(0,Log.w(TAG, "This is a test message."));
+		assertEquals(0,Log.e(TAG, "This is a test message."));
+	}
+
+	@Test
 	public void ThrowableTest() {
-		Log.level=Level.VERBOSE;
 		String TAG="ThrowableTest";
 		Exception e=new Exception("This is a test exception.");
 		assertEquals(0,Log.v(TAG, "This is a test message.",e));
