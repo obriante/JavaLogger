@@ -1,4 +1,4 @@
-package com.github.kernelmonkey.jajlogger;
+package com.github.kernelmonkey.java.logger;
 
 import java.io.PrintStream;
 
